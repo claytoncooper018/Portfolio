@@ -20,21 +20,6 @@ Cloud: Microsoft Azure
 
 Tools: Git, GitHub, VS Code
 
-🚀 Projects
-Portfolio Website
-
-Code editor–inspired personal portfolio built with HTML, CSS, and JavaScript.
-
-API Service
-
-RESTful API built using ASP.NET Core with authentication and database integration.
-
-Database Tool
-
-SQL-driven application for reporting and data analysis.
-
-More projects coming as I continue learning and building.
-
 🎯 Goals
 
 Grow into a Software Engineer role
