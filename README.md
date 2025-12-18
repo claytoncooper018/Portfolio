@@ -47,6 +47,6 @@ Work on impactful products with strong engineering teams
 
 📧 Email: claytoncooper018@gmail.com
 
-💼 LinkedIn: https://www.linkedin.com/claytoncooper018/
+💼 LinkedIn: https://www.linkedin.com/in/claytoncooper018/
 
 🐙 GitHub: https://github.com/claytoncooper018
