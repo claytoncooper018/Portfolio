@@ -151,21 +151,21 @@
     /* Mobile responsiveness */
 @media (max-width: 768px) {
     .vscode-window {
-        margin: 50px 10px; /* less top margin and smaller sides */
+        margin: 40px 10px;
         width: auto;
     }
 
     .editor {
-        flex-direction: column; /* stack sidebar and content vertically */
-        height: auto;
+        flex-direction: column;
     }
 
     .sidebar {
         width: 100%;
-        flex-direction: row; /* sidebar content in a row */
-        justify-content: center;
-        gap: 15px;
-        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 14px 10px;
+        gap: 8px;
         border-right: none;
         border-bottom: 1px solid #333;
     }
@@ -176,29 +176,23 @@
     }
 
     .sidebar h1 {
-        font-size: 1.2rem;
-        text-align: left;
+        font-size: 1.25rem;
     }
 
     .sidebar p {
-        font-size: 0.8rem;
-        text-align: left;
+        font-size: 0.85rem;
     }
 
     .line-numbers {
-        display: none; /* hide line numbers on mobile */
+        display: none;
     }
 
     .content {
-        padding: 12px 10px;
+        padding: 12px 12px;
         line-height: 22px;
     }
 
     .hero h1 {
         font-size: 1.6rem;
-    }
-
-    .projects .project {
-        padding: 6px 8px;
     }
 }
