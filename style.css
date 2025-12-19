@@ -1,184 +1,204 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
-/* Base Styles */
-body {
-    margin: 0;
-    background: #1e1e1e;
-    font-family: 'Fira Code', monospace;
-    color: #d4d4d4;
-    display: flex;
-    justify-content: center; /* horizontal center */
-    align-items: flex-start; /* slight top alignment */
-    padding: 50px 20px;      /* top padding for top spacing */
-    min-height: 100vh;
-    overflow: hidden;         /* prevent body scroll */
-}
-
-/* Matrix background */
-#matrixCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* VS Code Window */
-.vscode-window {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    width: 95%;
-    max-width: 1200px;
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    height: 80vh;             /* editor takes most of viewport height */
-}
-
-/* Window Bar */
-.window-bar {
-    display: flex;
-    align-items: center;
-    padding: 6px 12px;
-    background: #2d2d30;
-    color: #ccc;
-    font-size: 0.9rem;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
-
-.controls span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 6px;
-}
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-
-.title {
-    flex: 1;
-    text-align: center;
-    font-weight: 500;
-    color: #ccc;
-}
-
-/* Editor */
-.editor {
-    display: flex;
-    flex: 1;                 /* take remaining vertical space */
-    overflow: hidden;        /* prevent double scroll */
-}
-
-/* Sidebar */
-.sidebar {
-    width: 260px;
-    flex-shrink: 0;
-    padding: 20px;
-    background-color: #252526;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 1px solid #333;
-    text-align: center;
-    overflow-y: auto;        /* scroll if sidebar content is too tall */
-}
-
-.profile-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #7ecbff;
-}
-
-.sidebar h1 { color: #7ecbff; font-size: 1.4rem; margin: 10px 0 5px; }
-.sidebar p { font-size: 0.85rem; margin: 2px 0; color: #d4d4d4; }
-
-.cv-button {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #0e639c;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    transition: 0.3s;
-}
-.cv-button:hover { background-color: #1177bb; }
-
-/* Line Numbers */
-.line-numbers {
-    width: 50px;
-    background: #1e1e1e;
-    color: #858585;
-    text-align: right;
-    padding: 10px 5px;
-    border-right: 1px solid #333;
-    overflow-y: hidden; /* remove individual scrollbar */
-}
-
-.line-numbers span {
-    display: block;
-    line-height: 24px;
-}
-
-/* Content */
-.content {
-    flex: 1;
-    padding: 12px 20px;
-    line-height: 24px;
-    overflow-y: auto;        /* single main scrollbar */
-}
-
-/* Sections */
-.hero h1 { font-size: 1.8rem; margin-bottom: 8px; }
-.about h2, .projects h2, .contact h2 { font-size: 1.3rem; margin-bottom: 6px; }
-.projects .project {
-    margin-bottom: 10px;
-    background: #2d2d30;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
-
-/* Contact links */
-.contact a {
-    color: #d4d4d4;
-    text-decoration: none;
-    position: relative;
-}
-.contact a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 1px;
-    background-color: #9cdcfe;
-    transition: width 0.25s ease;
-}
-.contact a:hover { color: #9cdcfe; }
-.contact a:hover::after { width: 100%; }
-
-/* Responsive */
-@media (max-width: 900px) {
-    .vscode-window { height: auto; }
-    .editor {
-        flex-direction: column;
+    body {
+        margin: 0;
+        background: #1e1e1e;
+        font-family: 'Fira Code', monospace;
+        color: #d4d4d4;
     }
+
+    /* Matrix canvas background */
+    #matrixCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0; /* behind everything */
+        pointer-events: none;
+    }
+
+    .vscode-window {
+        position: relative;
+        z-index: 1; /* in front of canvas */
+        margin: 150px auto 20px auto; /* top, sides, bottom */
+        width: 90%;
+        max-width: 1200px;
+        background: #1e1e1e;
+        border: 1px solid #333;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .window-bar {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        background: #2d2d30;
+        color: #ccc;
+        font-size: 0.9rem;
+    }
+
+    .controls span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .editor {
+        display: flex;
+        height: 70vh;
+        border-top: 1px solid #333;
+    }
+
+    /* Sidebar with photo */
+    .sidebar {
+        width: 260px;
+        background-color: #252526;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        border-right: 1px solid #333;
+        overflow: visible;
+    }
+
+    /* Profile photo */
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #7ecbff;
+    }
+
+    .sidebar h1 { color: #7ecbff; font-size: 1.5rem; text-align: center; }
+    .sidebar p { color: #d4d4d4; font-size: 0.9rem; text-align: center; }
+
+    .cv-button {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #0e639c;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s;
+    }
+    .cv-button:hover { background-color: #1177bb; }
+
+    /* Line numbers */
+    .line-numbers {
+        width: 50px;
+        background: #1e1e1e;
+        color: #858585;
+        text-align: right;
+        padding: 10px 5px;
+        border-right: 1px solid #333;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    .line-numbers span { display: block; line-height: 24px; }
+
+    /* Editor content scrollable */
+    .content {
+        flex: 1;
+        padding: 12px 20px;
+        overflow-y: auto;
+        line-height: 24px;
+    }
+
+    /* Sections styling */
+    .hero h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    .hero span { color: #7ecbff; }
+    .projects .project {
+        margin-bottom: 10px;
+        background: #2d2d30;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+    /* Contact links – VS Code style underline */
+    .contact a {
+        color: #d4d4d4;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .contact a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 1px;
+        background-color: #9cdcfe; /* VS Code cyan */
+        transition: width 0.25s ease;
+    }
+
+    .contact a:hover {
+        color: #9cdcfe;
+    }
+
+    .contact a:hover::after {
+        width: 100%;
+    }
+
+    /* Mobile responsiveness */
+@media (max-width: 768px) {
+    .vscode-window {
+        margin: 50px 10px; /* less top margin and smaller sides */
+        width: auto;
+    }
+
+    .editor {
+        flex-direction: column; /* stack sidebar and content vertically */
+        height: auto;
+    }
+
     .sidebar {
         width: 100%;
+        flex-direction: row; /* sidebar content in a row */
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
         border-right: none;
         border-bottom: 1px solid #333;
-        max-height: 200px;
     }
-    .line-numbers { display: none; }
+
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .sidebar h1 {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    .sidebar p {
+        font-size: 0.8rem;
+        text-align: left;
+    }
+
+    .line-numbers {
+        display: none; /* hide line numbers on mobile */
+    }
+
+    .content {
+        padding: 12px 10px;
+        line-height: 22px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .projects .project {
+        padding: 6px 8px;
+    }
 }
