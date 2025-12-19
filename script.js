@@ -3,22 +3,28 @@ const content = document.getElementById('editorContent');
 const numbers = document.getElementById('lineNumbers');
 
 function updateLines() {
+    const lineHeight = 24; // same as CSS
+    const totalLines = Math.ceil(content.scrollHeight / lineHeight);
     numbers.innerHTML = '';
-    const lineHeight = 24; 
-    const total = Math.ceil(content.scrollHeight / lineHeight);
-    for (let i = 1; i <= total; i++) {
+    for (let i = 1; i <= totalLines; i++) {
         const span = document.createElement('span');
         span.textContent = i;
         numbers.appendChild(span);
     }
 }
 
+// Sync scroll between content and line numbers
 content.addEventListener('scroll', () => {
     numbers.scrollTop = content.scrollTop;
 });
 
 window.addEventListener('load', updateLines);
 window.addEventListener('resize', updateLines);
+
+// Optional: update line numbers if content changes dynamically
+const observer = new MutationObserver(updateLines);
+observer.observe(content, { childList: true, subtree: true });
+
 
 // -------------------- Matrix Background --------------------
 const canvas = document.getElementById('matrixCanvas');
@@ -56,3 +62,4 @@ window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
 });
+
