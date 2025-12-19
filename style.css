@@ -10,11 +10,11 @@
         height: auto;
     }
 
-    /* Sidebar scales nicely */
+    /* Sidebar scales proportionally */
     .sidebar {
-        width: 90%;
-        max-width: 250px;  /* limits max width */
-        margin: 0 auto;    /* center it */
+        width: 90%;           /* relative to container */
+        max-width: 300px;     /* optional cap */
+        margin: 0 auto;
         padding: 10px;
         border-right: none;
         border-bottom: 1px solid #333;
@@ -22,27 +22,33 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        box-sizing: border-box;  /* include padding in width */
     }
 
     .profile-photo {
-        width: 80px;
-        height: 80px;
+        width: 25vw;   /* scale with viewport width */
+        max-width: 100px; /* cap size */
+        height: auto;      /* maintain aspect ratio */
         border-width: 1.5px;
     }
 
     .sidebar h1 {
-        font-size: 1.2rem;
+        font-size: 5vw;   /* scale with screen width */
+        max-font-size: 1.2rem;
         text-align: center;
+        margin: 0;
     }
 
     .sidebar p {
-        font-size: 0.8rem;
+        font-size: 3.5vw;  /* scale with screen */
+        max-font-size: 0.85rem;
         text-align: center;
         margin: 2px 0;
     }
 
     .cv-button {
-        font-size: 0.8rem;
+        font-size: 3.5vw;  /* scale with screen */
+        max-font-size: 0.85rem;
         padding: 6px 10px;
     }
 
@@ -51,7 +57,8 @@
     }
 
     .hero h2 {
-        font-size: 1.5rem;
+        font-size: 5vw;
+        max-font-size: 1.5rem;
     }
 
     .content {
