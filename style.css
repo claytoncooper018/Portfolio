@@ -7,28 +7,30 @@ body {
     color: #d4d4d4;
 }
 
-/* Matrix canvas background */
+/* Matrix background */
 #matrixCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* behind everything */
+    z-index: 0;
     pointer-events: none;
 }
 
+/* VS Code window */
 .vscode-window {
     position: relative;
-    z-index: 1; /* in front of canvas */
-    margin: 150px auto 20px auto; /* top, sides, bottom */
-    width: 90%;
+    z-index: 1;
+    margin: 50px auto;
+    width: 95%;
     max-width: 1200px;
     background: #1e1e1e;
     border: 1px solid #333;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
+/* Window bar */
 .window-bar {
     display: flex;
     align-items: center;
@@ -51,13 +53,15 @@ body {
 
 .editor {
     display: flex;
-    height: 70vh;
+    flex-direction: row;
+    height: auto;
     border-top: 1px solid #333;
+    flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
-/* Sidebar with photo */
+/* Sidebar */
 .sidebar {
-    width: 260px;
+    flex: 0 0 260px;
     background-color: #252526;
     padding: 20px;
     display: flex;
@@ -65,7 +69,7 @@ body {
     align-items: center;
     gap: 15px;
     border-right: 1px solid #333;
-    overflow: visible;
+    box-sizing: border-box;
 }
 
 /* Profile photo */
@@ -77,8 +81,16 @@ body {
     border: 2px solid #7ecbff;
 }
 
-.sidebar h1 { color: #7ecbff; font-size: 1.5rem; text-align: center; }
-.sidebar p { color: #d4d4d4; font-size: 0.9rem; text-align: center; }
+.sidebar h1 {
+    color: #7ecbff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.sidebar p {
+    color: #d4d4d4;
+    font-size: 0.9rem;
+    text-align: center;
+}
 
 .cv-button {
     display: inline-block;
@@ -105,30 +117,32 @@ body {
 }
 .line-numbers span { display: block; line-height: 24px; }
 
-/* Editor content scrollable */
+/* Editor content */
 .content {
     flex: 1;
     padding: 12px 20px;
     overflow-y: auto;
     line-height: 24px;
+    min-width: 250px;
 }
 
 /* Sections styling */
 .hero h1 { font-size: 2.2rem; margin-bottom: 8px; }
 .hero span { color: #7ecbff; }
+
 .projects .project {
     margin-bottom: 10px;
     background: #2d2d30;
     padding: 8px 12px;
     border-radius: 4px;
 }
-/* Contact links – VS Code style underline */
+
+/* Contact links */
 .contact a {
     color: #d4d4d4;
     text-decoration: none;
     position: relative;
 }
-
 .contact a::after {
     content: '';
     position: absolute;
@@ -136,69 +150,35 @@ body {
     bottom: -2px;
     width: 0;
     height: 1px;
-    background-color: #9cdcfe; /* VS Code cyan */
+    background-color: #9cdcfe;
     transition: width 0.25s ease;
 }
+.contact a:hover { color: #9cdcfe; }
+.contact a:hover::after { width: 100%; }
 
-.contact a:hover {
-    color: #9cdcfe;
-}
-
-.contact a:hover::after {
-    width: 100%;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .vscode-window {
-        margin: 50px 10px; /* less top margin and smaller sides */
-        width: auto;
-    }
-
+/* ===================== MOBILE RESPONSIVENESS ===================== */
+@media (max-width: 900px) {
     .editor {
-        flex-direction: column; /* stack sidebar and content vertically */
-        height: auto;
+        flex-direction: column;
     }
-
     .sidebar {
         width: 100%;
-        flex-direction: row; /* sidebar content in a row */
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
         padding: 10px;
         border-right: none;
         border-bottom: 1px solid #333;
     }
-
-    .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .sidebar h1 {
-        font-size: 1.2rem;
-        text-align: left;
-    }
-
-    .sidebar p {
-        font-size: 0.8rem;
-        text-align: left;
-    }
-
-    .line-numbers {
-        display: none; /* hide line numbers on mobile */
-    }
-
-    .content {
-        padding: 12px 10px;
-        line-height: 22px;
-    }
-
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .projects .project {
-        padding: 6px 8px;
-    }
+    .profile-photo { width: 80px; height: 80px; }
+    .sidebar h1 { font-size: 1.2rem; text-align: center; width: 100%; }
+    .sidebar p { font-size: 0.8rem; text-align: center; width: 100%; }
+    .line-numbers { display: none; }
+    .content { padding: 10px; }
+    .hero h1 { font-size: 1.6rem; }
+    .projects .project { padding: 6px 8px; }
+}
+@media (max-width: 480px) {
+    .vscode-window { margin: 30px 5px; }
+    .sidebar { flex-direction: column; align-items: center; text-align: center; }
 }
