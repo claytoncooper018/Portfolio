@@ -7,6 +7,13 @@ body {
     font-family: 'Fira Code', monospace;
     color: #d4d4d4;
     overflow-x: hidden;
+
+    /* Flex centering */
+    display: flex;
+    justify-content: center; /* horizontal centering */
+    align-items: flex-start; /* vertical positioning: top slightly */
+    padding-top: 50px;       /* distance from top */
+    min-height: 100vh;       /* full viewport height */
 }
 
 /* Matrix background */
@@ -24,7 +31,7 @@ body {
 .vscode-window {
     position: relative;
     z-index: 1;
-    margin: 30px auto;
+    margin: 0; /* remove old top/bottom margins */
     width: 95%;
     max-width: 1200px;
     background: #1e1e1e;
