@@ -153,36 +153,30 @@ body {
    ========================= */
 @media (max-width: 768px) {
 
-    .vscode-window {
-        margin: 40px auto 20px;
-        width: 95%; /* slightly smaller than full width */
-    }
-
-    .editor {
-        flex-direction: column;
-        height: auto;
-    }
-
     .sidebar {
-        width: 90%; /* not full width */
-        max-width: 300px; /* optional cap */
-        margin: 0 auto; /* center horizontally */
+        width: auto;            /* let content define width */
+        max-width: 250px;       /* cap width for mobile */
+        margin: 0 auto;         /* center horizontally */
+        padding: 15px;          /* adjust padding */
         border-right: none;
         border-bottom: 1px solid #333;
-        padding: 15px; /* reduce padding for small screens */
     }
 
-    .line-numbers {
-        display: none;
+    .profile-photo {
+        width: 100px;           /* smaller photo */
+        height: 100px;
     }
 
-    .hero h2 {
-        font-size: 1.6rem;
+    .sidebar h1 {
+        font-size: 1.3rem;      /* smaller name text */
     }
 
-    a,
+    .sidebar p {
+        font-size: 0.85rem;     /* smaller info text */
+    }
+
     .cv-button {
-        padding: 12px 16px;
+        font-size: 0.85rem;
+        padding: 8px 12px;
     }
 }
-
