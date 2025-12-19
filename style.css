@@ -147,3 +147,58 @@ body {
 .contact a:hover::after {
     width: 100%;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .vscode-window {
+        margin: 50px 10px; /* less top margin and smaller sides */
+        width: auto;
+    }
+
+    .editor {
+        flex-direction: column; /* stack sidebar and content vertically */
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row; /* sidebar content in a row */
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .sidebar h1 {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    .sidebar p {
+        font-size: 0.8rem;
+        text-align: left;
+    }
+
+    .line-numbers {
+        display: none; /* hide line numbers on mobile */
+    }
+
+    .content {
+        padding: 12px 10px;
+        line-height: 22px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .projects .project {
+        padding: 6px 8px;
+    }
+}
