@@ -1,160 +1,212 @@
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
-    body {
-        margin: 0;
-        background: #1e1e1e;
-        font-family: 'Fira Code', monospace;
-        color: #d4d4d4;
-    }
+html, body {
+    margin: 0;
+    background: #1e1e1e;
+    font-family: 'Fira Code', monospace;
+    color: #d4d4d4;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
 
-    /* Matrix canvas background */
-    #matrixCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0; /* behind everything */
-        pointer-events: none;
-    }
+/* Matrix canvas background */
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
 
-    .vscode-window {
-        position: relative;
-        z-index: 1; /* in front of canvas */
-        margin: 150px auto 20px auto; /* top, sides, bottom */
-        width: 90%;
-        max-width: 1200px;
-        background: #1e1e1e;
-        border: 1px solid #333;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
+/* VS Code window */
+.vscode-window {
+    position: relative;
+    z-index: 1;
+    margin: 150px auto 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
-    .window-bar {
-        display: flex;
-        align-items: center;
-        padding: 6px 12px;
-        background: #2d2d30;
-        color: #ccc;
-        font-size: 0.9rem;
-    }
+.window-bar {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #2d2d30;
+    color: #ccc;
+    font-size: 0.9rem;
+}
 
-    .controls span {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin-right: 6px;
-    }
-    .red { background: #ff5f56; }
-    .yellow { background: #ffbd2e; }
-    .green { background: #27c93f; }
+.controls span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
 
-    .editor {
-        display: flex;
-        height: 70vh;
-        border-top: 1px solid #333;
-    }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
-    /* Sidebar with photo */
-    .sidebar {
-        width: 260px;
-        background-color: #252526;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        border-right: 1px solid #333;
-        overflow: visible;
-    }
+/* Editor */
+.editor {
+    display: flex;
+    min-height: 70vh;
+    min-height: 70dvh;
+    border-top: 1px solid #333;
+}
 
-    /* Profile photo */
-    .profile-photo {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #7ecbff;
-    }
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: #252526;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border-right: 1px solid #333;
+}
 
-    .sidebar h1 { color: #7ecbff; font-size: 1.5rem; text-align: center; }
-    .sidebar p { color: #d4d4d4; font-size: 0.9rem; text-align: center; }
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #7ecbff;
+}
 
-    .cv-button {
-        display: inline-block;
-        padding: 8px 12px;
-        background-color: #0e639c;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        transition: background-color 0.3s;
-    }
-    .cv-button:hover { background-color: #1177bb; }
+.sidebar h1 {
+    color: #7ecbff;
+    font-size: 1.5rem;
+    text-align: center;
+}
 
-    /* Line numbers */
-    .line-numbers {
-        width: 50px;
-        background: #1e1e1e;
-        color: #858585;
-        text-align: right;
-        padding: 10px 5px;
-        border-right: 1px solid #333;
-        flex-shrink: 0;
-        overflow: hidden;
-    }
-    .line-numbers span { display: block; line-height: 24px; }
+.sidebar p {
+    font-size: 0.9rem;
+    text-align: center;
+}
 
-    /* Editor content scrollable */
-    .content {
-        flex: 1;
-        padding: 12px 20px;
-        overflow-y: auto;
-        line-height: 24px;
-    }
+.cv-button {
+    padding: 8px 12px;
+    background-color: #0e639c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
 
-    /* Sections styling */
-    .hero h1 { font-size: 2.2rem; margin-bottom: 8px; }
-    .hero span { color: #7ecbff; }
-    .projects .project {
-        margin-bottom: 10px;
-        background: #2d2d30;
-        padding: 8px 12px;
-        border-radius: 4px;
-    }
-    /* Contact links – VS Code style underline */
-    .contact a {
-        color: #d4d4d4;
-        text-decoration: none;
-        position: relative;
-    }
+.cv-button:hover {
+    background-color: #1177bb;
+}
 
-    .contact a::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        width: 0;
-        height: 1px;
-        background-color: #9cdcfe; /* VS Code cyan */
-        transition: width 0.25s ease;
-    }
+/* Line numbers */
+.line-numbers {
+    width: 50px;
+    background: #1e1e1e;
+    color: #858585;
+    text-align: right;
+    padding: 10px 5px;
+    border-right: 1px solid #333;
+}
 
-    .contact a:hover {
-        color: #9cdcfe;
-    }
+.line-numbers span {
+    display: block;
+    line-height: 24px;
+}
 
-    .contact a:hover::after {
-        width: 100%;
-    }
+/* Content */
+.content {
+    flex: 1;
+    padding: 12px 20px;
+    overflow-y: auto;
+    line-height: 24px;
+    -webkit-overflow-scrolling: touch;
+}
 
-    /* Mobile responsiveness */
+/* Sections */
+.hero h1 {
+    font-size: 2.2rem;
+}
+
+.projects .project {
+    margin-bottom: 12px;
+    background: #2d2d30;
+    padding: 10px 14px;
+    border-radius: 4px;
+}
+
+/* ===============================
+   PROJECT LINKS (VS CODE THEME)
+   =============================== */
+
+.projects h3 a {
+    color: #dcdcaa; /* VS Code keyword yellow */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.projects h3 a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background-color: #9cdcfe; /* VS Code cyan */
+    transition: width 0.25s ease;
+}
+
+.projects h3 a:hover {
+    color: #9cdcfe;
+}
+
+.projects h3 a:hover::after {
+    width: 100%;
+}
+
+.projects h3 a:visited {
+    color: #dcdcaa;
+}
+
+/* Contact links */
+.contact a {
+    color: #d4d4d4;
+    text-decoration: none;
+    position: relative;
+}
+
+.contact a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: #9cdcfe;
+    transition: width 0.25s ease;
+}
+
+.contact a:hover {
+    color: #9cdcfe;
+}
+
+.contact a:hover::after {
+    width: 100%;
+}
+
 /* ===========================
-   IPHONE / MOBILE OVERRIDE
+   MOBILE OVERRIDE
    =========================== */
 @media (max-width: 768px) {
 
-    /* Kill desktop illusion */
     #matrixCanvas {
         display: none;
     }
@@ -166,25 +218,20 @@
     .vscode-window {
         margin: 0;
         width: 100%;
-        max-width: 100%;
         border: none;
         box-shadow: none;
     }
 
-    /* Remove editor layout */
     .editor {
         display: block;
-        height: auto;
     }
 
     .line-numbers {
         display: none;
     }
 
-    /* Turn sidebar into header */
     .sidebar {
         width: 100%;
-        position: relative;
         padding: 20px 16px;
         border-bottom: 1px solid #333;
         text-align: center;
@@ -193,38 +240,20 @@
     .profile-photo {
         width: 90px;
         height: 90px;
-        margin-bottom: 10px;
     }
 
-    .sidebar h1 {
-        font-size: 1.4rem;
-        margin: 6px 0;
-    }
-
-    .sidebar p {
-        font-size: 0.9rem;
-        margin: 2px 0;
-    }
-
-    /* Normal page scrolling */
     .content {
         padding: 18px 16px;
         overflow: visible;
         line-height: 1.6;
     }
 
-    /* Mobile readable typography */
     body {
         font-size: 16px;
-        overflow-x: hidden;
     }
 
     section {
         margin-bottom: 32px;
-    }
-
-    h1, h2, h3 {
-        line-height: 1.3;
     }
 
     a {
