@@ -149,50 +149,87 @@
     }
 
     /* Mobile responsiveness */
+/* ===========================
+   IPHONE / MOBILE OVERRIDE
+   =========================== */
 @media (max-width: 768px) {
+
+    /* Kill desktop illusion */
+    #matrixCanvas {
+        display: none;
+    }
+
+    .window-bar {
+        display: none;
+    }
+
     .vscode-window {
-        margin: 40px 10px;
-        width: auto;
-    }
-
-    .editor {
-        flex-direction: column;
-    }
-
-    .sidebar {
+        margin: 0;
         width: 100%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 14px 10px;
-        gap: 8px;
-        border-right: none;
-        border-bottom: 1px solid #333;
+        max-width: 100%;
+        border: none;
+        box-shadow: none;
     }
 
-    .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .sidebar h1 {
-        font-size: 1.25rem;
-    }
-
-    .sidebar p {
-        font-size: 0.85rem;
+    /* Remove editor layout */
+    .editor {
+        display: block;
+        height: auto;
     }
 
     .line-numbers {
         display: none;
     }
 
-    .content {
-        padding: 12px 12px;
-        line-height: 22px;
+    /* Turn sidebar into header */
+    .sidebar {
+        width: 100%;
+        position: relative;
+        padding: 20px 16px;
+        border-bottom: 1px solid #333;
+        text-align: center;
     }
 
-    .hero h1 {
-        font-size: 1.6rem;
+    .profile-photo {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar h1 {
+        font-size: 1.4rem;
+        margin: 6px 0;
+    }
+
+    .sidebar p {
+        font-size: 0.9rem;
+        margin: 2px 0;
+    }
+
+    /* Normal page scrolling */
+    .content {
+        padding: 18px 16px;
+        overflow: visible;
+        line-height: 1.6;
+    }
+
+    /* Mobile readable typography */
+    body {
+        font-size: 16px;
+        overflow-x: hidden;
+    }
+
+    section {
+        margin-bottom: 32px;
+    }
+
+    h1, h2, h3 {
+        line-height: 1.3;
+    }
+
+    a {
+        font-size: 16px;
+        padding: 8px 0;
+        display: inline-block;
     }
 }
