@@ -16,6 +16,13 @@ body {
     overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
+/* Container for centering */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 /* Matrix canvas background */
 #matrixCanvas {
     position: fixed;
@@ -30,8 +37,8 @@ body {
 /* VS Code window */
 .vscode-window {
     position: relative;
-    z-index: 1;
-    margin: 50px auto 20px auto; /* top, sides, bottom */
+    z-index: 1; /* above canvas */
+    margin: 50px auto 20px auto;
     width: 90%;
     max-width: 1200px;
     background: #1e1e1e;
@@ -65,7 +72,7 @@ body {
     display: flex;
     height: 70vh;
     border-top: 1px solid #333;
-    flex-wrap: wrap; /* allow wrapping on small screens */
+    flex-wrap: wrap; /* allows stacking on small screens */
 }
 
 /* Sidebar */
@@ -130,7 +137,7 @@ body {
 /* Editor content */
 .content {
     flex: 1;
-    min-width: 0; /* prevents content from overflowing flex container */
+    min-width: 0; /* prevent overflow */
     padding: 12px 20px;
     overflow-y: auto;
     line-height: 24px;
