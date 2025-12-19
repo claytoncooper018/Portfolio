@@ -35,3 +35,9 @@ Work on impactful products with strong engineering teams
 💼 LinkedIn: https://www.linkedin.com/in/claytoncooper018/
 
 🐙 GitHub: https://github.com/claytoncooper018
+
+# Clayton Cooper — Software Engineer
+
+[![Clayton Cooper Portfolio](assets/thumbnail.png)](https://claytoncooper.dev)
+
+🔗 Live Portfolio: https://claytoncooper.dev
