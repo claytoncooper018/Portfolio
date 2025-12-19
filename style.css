@@ -154,8 +154,10 @@ body {
 @media (min-width: 900px) {
     .editor {
         flex-direction: row;
-        height: 70vh; /* fixed VS window height */
+        height: auto;             /* allow content to define height */
+        max-height: 70vh;         /* keeps VS window "window-like" */
     }
+
     .sidebar {
         width: 260px;
         border-right: 1px solid #333;
@@ -163,6 +165,7 @@ body {
         align-items: center;
         text-align: center;
     }
+
     .line-numbers { 
         display: block;
         width: 50px;
@@ -173,17 +176,23 @@ body {
         border-right: 1px solid #333;
         flex-shrink: 0;
         overflow: hidden;
-        height: 100%;
+        height: auto;            /* adjust to content height */
         box-sizing: border-box;
     }
-    .line-numbers span { display: block; line-height: 24px; }
+
+    .line-numbers span { 
+        display: block; 
+        line-height: 24px; 
+    }
+
     .content { 
         flex: 1;
         padding: 12px 20px;
         line-height: 24px;
-        height: 100%;
-        overflow-y: auto;
-        box-sizing: border-box;   /* ensures padding is inside height */
-        padding-bottom: 8px;      /* small buffer so text doesn’t touch bottom */
+        height: auto;            /* match content height */
+        max-height: 70vh;        /* optional: same as editor max */
+        overflow-y: auto;        /* scroll only if needed */
+        box-sizing: border-box;  
+        padding-bottom: 8px;     /* buffer at bottom */
     }
 }
