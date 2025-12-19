@@ -153,8 +153,8 @@ body {
 ========================= */
 @media (min-width: 900px) {
     .editor {
-        flex-direction: row; /* sidebar left, content right */
-        height: 70vh;
+        flex-direction: row;
+        height: 70vh; /* fixed VS window height */
     }
     .sidebar {
         width: 260px;
@@ -173,9 +173,15 @@ body {
         border-right: 1px solid #333;
         flex-shrink: 0;
         overflow: hidden;
+        height: 100%;       /* IMPORTANT: fills editor height */
+        box-sizing: border-box;
     }
     .line-numbers span { display: block; line-height: 24px; }
-    .content { padding: 12px 20px; line-height: 24px; }
-    .hero h1 { font-size: 2.2rem; }
-    .projects .project { padding: 8px 12px; }
+    .content { 
+        flex: 1;
+        padding: 12px 20px;
+        line-height: 24px;
+        height: 100%;       /* IMPORTANT: match editor height */
+        overflow-y: auto;
+    }
 }
