@@ -1,26 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
-/* =========================
-   GLOBAL STYLES
-   ========================= */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
+    margin: 0;
     background: #1e1e1e;
     font-family: 'Fira Code', monospace;
     color: #d4d4d4;
-    overflow-x: hidden; /* prevent horizontal scrolling */
-}
-
-/* Container for centering */
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 /* Matrix canvas background */
@@ -34,11 +18,10 @@ body {
     pointer-events: none;
 }
 
-/* VS Code window */
 .vscode-window {
     position: relative;
-    z-index: 1; /* above canvas */
-    margin: 50px auto 20px auto;
+    z-index: 1; /* in front of canvas */
+    margin: 150px auto 20px auto; /* top, sides, bottom */
     width: 90%;
     max-width: 1200px;
     background: #1e1e1e;
@@ -46,7 +29,6 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Window bar */
 .window-bar {
     display: flex;
     align-items: center;
@@ -67,18 +49,15 @@ body {
 .yellow { background: #ffbd2e; }
 .green { background: #27c93f; }
 
-/* Editor layout */
 .editor {
     display: flex;
     height: 70vh;
     border-top: 1px solid #333;
-    flex-wrap: wrap; /* allows stacking on small screens */
 }
 
-/* Sidebar */
+/* Sidebar with photo */
 .sidebar {
-    flex: 0 0 260px;
-    max-width: 100%;
+    width: 260px;
     background-color: #252526;
     padding: 20px;
     display: flex;
@@ -86,6 +65,7 @@ body {
     align-items: center;
     gap: 15px;
     border-right: 1px solid #333;
+    overflow: visible;
 }
 
 /* Profile photo */
@@ -97,17 +77,8 @@ body {
     border: 2px solid #7ecbff;
 }
 
-.sidebar h1 {
-    color: #7ecbff;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.sidebar p {
-    color: #d4d4d4;
-    font-size: 0.9rem;
-    text-align: center;
-}
+.sidebar h1 { color: #7ecbff; font-size: 1.5rem; text-align: center; }
+.sidebar p { color: #d4d4d4; font-size: 0.9rem; text-align: center; }
 
 .cv-button {
     display: inline-block;
@@ -134,32 +105,30 @@ body {
 }
 .line-numbers span { display: block; line-height: 24px; }
 
-/* Editor content */
+/* Editor content scrollable */
 .content {
     flex: 1;
-    min-width: 0; /* prevent overflow */
     padding: 12px 20px;
     overflow-y: auto;
     line-height: 24px;
 }
 
-/* Sections */
+/* Sections styling */
 .hero h1 { font-size: 2.2rem; margin-bottom: 8px; }
 .hero span { color: #7ecbff; }
-
 .projects .project {
     margin-bottom: 10px;
     background: #2d2d30;
     padding: 8px 12px;
     border-radius: 4px;
 }
-
-/* Contact links */
+/* Contact links – VS Code style underline */
 .contact a {
     color: #d4d4d4;
     text-decoration: none;
     position: relative;
 }
+
 .contact a::after {
     content: '';
     position: absolute;
@@ -167,66 +136,14 @@ body {
     bottom: -2px;
     width: 0;
     height: 1px;
-    background-color: #9cdcfe;
+    background-color: #9cdcfe; /* VS Code cyan */
     transition: width 0.25s ease;
 }
-.contact a:hover { color: #9cdcfe; }
-.contact a:hover::after { width: 100%; }
 
-/* =========================
-   MOBILE RESPONSIVE
-   ========================= */
-@media (max-width: 768px) {
+.contact a:hover {
+    color: #9cdcfe;
+}
 
-    .vscode-window {
-        margin: 20px auto;
-        width: 95%;
-        max-width: 600px;
-    }
-
-    .editor {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .sidebar {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        border-right: none;
-        border-bottom: 1px solid #333;
-        padding: 15px;
-    }
-
-    .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .sidebar h1 {
-        font-size: 1.2rem;
-    }
-
-    .sidebar p {
-        font-size: 0.85rem;
-        margin: 2px 0;
-    }
-
-    .cv-button {
-        font-size: 0.85rem;
-        padding: 6px 10px;
-    }
-
-    .line-numbers {
-        display: none;
-    }
-
-    .content {
-        width: 100%;
-        padding: 10px 15px;
-    }
-
-    .hero h2 {
-        font-size: 1.5rem;
-    }
+.contact a:hover::after {
+    width: 100%;
 }
